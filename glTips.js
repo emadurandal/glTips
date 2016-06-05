@@ -23,7 +23,7 @@
   glTips.getWebGL2Context = glTips_getWebGL2Context; // glTips#getWebGL2Context(canvas:HTMLCanvasElement):WebGL2RenderingContext
   glTips.compileShader = glTips_compileShader; // glTips#compileShader(gl:WebGLRenderingContext, shaderType:[gl.VERTEX_SHADER|gl.FRAGMENT_SHADER], shaderText:string):WebGLShader
   glTips.setupShaderProgram = glTips_setupShaderProgram; // glTips#setupShaderProgram(gl:WebGLRenderingContext, vertexShader:WebGLShader, fragmentShader:WebGLShader):WebGLShaderProgram
-  glTips.setupShaderProgramFromSource = glTips_setupShaderProgramFromSource; // glTips#setupShaderProgram(gl, vertexShaderText:string, fragmentShaderText:string):WebGLShaderProgram
+  glTips.setupShaderProgramFromSource = glTips_setupShaderProgramFromSource; // glTips#setupShaderProgramFromSource(gl, vertexShaderText:string, fragmentShaderText:string):WebGLShaderProgram
 
 
 // Implementation ---------------------------------------
@@ -56,7 +56,7 @@
    * @memberOf module:glTips
    */
   function glTips_getWebGL2Context(canvas) {
-    var gl = canvas.getContext("webgl2") || canvas.getContext("experimental-webgl2");;
+    var gl = canvas.getContext("webgl2") || canvas.getContext("experimental-webgl2");
 
     if (!gl) {
        throw new Error("WebGL2 not supported");
