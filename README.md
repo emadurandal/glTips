@@ -1,6 +1,7 @@
-# What is glTips
+# glTips
 
 [en]
+
 glTips is Useful, cherry-pickable, and CC0 (public domain like) licensed WebGL routine code snippets.
 
 We know that some WebGL beginners have hard time with WebGL routine API call steps.
@@ -17,6 +18,7 @@ You can even cherry-pick (copy) our part of codes, and you can past the part to 
 
 
 [ja]
+
 glTipsは便利で、つまみ食い可能で、そしてCC0（パブリックドメイン相当）ライセンスなWebGLルーチンコードスニペット集です。
 
 私たちは、少なからぬWebGL初学者たちが、WebGLのルーチン的なAPI呼び出しの手順について苦労していることを知っています。
