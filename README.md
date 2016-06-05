@@ -6,15 +6,15 @@ glTips is Useful, cherry-pickable, and CC0 (public domain like) licensed WebGL r
 
 We know that some WebGL beginners have hard time with WebGL routine API call steps.
 
-These our WebGL code functions handle WebGL initialization, Shaders initialization, etc... on your behalf.
+These WebGL code functions handle WebGL initialization, Shaders initialization, etc... on your behalf.
 
 Because of the CC0 license, You can use these WebGL codes for any purpose.
 
 You can introduce these whole codes by script tag or `require`(use Browserify or Webpack).
 
-You can even cherry-pick (copy) our part of codes, and you can past the part to your any projects. Feel free!
+You can even cherry-pick (copy) a part of the codes, and you can paste the part to your any projects. Feel free!
 
-(If you are a student of CG course, We recommend you to ask your teacher of permission to use our codes for your assignment.)
+(If you are a student of CG course, We recommend you to ask your teacher of permission to use glTips codes for your assignment.)
 
 
 [ja]
@@ -23,7 +23,7 @@ glTipsは便利で、つまみ食い可能で、そしてCC0（パブリック�
 
 私たちは、少なからぬWebGL初学者たちが、WebGLのルーチン的なAPI呼び出しの手順について苦労していることを知っています。
 
-この私たちのWebGL関数コードは、WebGLの初期化やシェーダーの初期化などといったことを、あなたの代わりに行います。
+これらのWebGL関数コードは、WebGLの初期化やシェーダーの初期化などといったことを、あなたの代わりに行います。
 
 CC0ライセンスなため、あなたはこれらのWebGLコードをどのような目的に使っても構いません。
 
@@ -31,7 +31,7 @@ CC0ライセンスなため、あなたはこれらのWebGLコードをどのよ
 
 一部のコードをつまみとって、あなたのあらゆるプロジェクトにコピペしても構わないのです。遠慮しないでください！
 
-（もしあなたがCGの授業の生徒だったら、あなたに出された課題に私たちのコードを使ってよいか、あなたの先生に確認を取ることをお勧めします。）
+（もしあなたがCGの授業の生徒だったら、あなたに出された課題にglTipsのコードを使ってよいか、あなたの先生に確認を取ることをお勧めします。）
 
 
 # License
