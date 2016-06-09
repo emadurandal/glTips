@@ -23,7 +23,7 @@
 
   initWebGL();
 
-  var INSTANCE_NUMBER = 10000;
+  var INSTANCE_NUMBER = 50000;
   var X_ARRANGE_NUMBER = 10;
   var shaderProgram = null;
   var attribLocationPosition = null;
@@ -41,7 +41,7 @@
 
     // convert separeted vertex attribute arrays to a interleaved array
     var typedArray = glTips.makeVerticesDataInterleaved(gl, gl.FLOAT,
-      [fighterPosArray, fighterNormalArray, fighterTexcoordArray],
+      [cubePosArray, cubeNormalArray, cubeTexcoordArray],
       [3, 3, 2]
     )
 
@@ -54,7 +54,7 @@
     // create Indexbuffer
     var ibo = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(fighterIndexArray), gl.STATIC_DRAW);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeIndexArray), gl.STATIC_DRAW);
   }
 
   var instanceVbo = null;
@@ -96,6 +96,7 @@
     gl.bindAttribLocation(shaderProgram, 2, 'aTexcoord');
     attribLocationTexcoord = 2;
     gl.enableVertexAttribArray(attribLocationTexcoord);
+
     gl.bindAttribLocation(shaderProgram, 3, 'aWorldMatrixRow1');
     attribLocationWorldMatrixRow1 = 3;
     gl.enableVertexAttribArray(attribLocationWorldMatrixRow1);
@@ -151,9 +152,7 @@
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     updateWorldMatrix();
-
-    ext.drawElementsInstancedANGLE(gl.TRIANGLES, fighterIndexArray.length, gl.UNSIGNED_SHORT, 0, INSTANCE_NUMBER);
-    //gl.drawElementsInstancedANGLE(gl.TRIANGLES, fighterIndexArray.length, gl.UNSIGNED_SHORT, 0, INSTANCE_NUMBER);
+    ext.drawElementsInstancedANGLE(gl.TRIANGLES, cubeIndexArray.length, gl.UNSIGNED_SHORT, 0, INSTANCE_NUMBER);
     rotation += 0.02;
 
     rS().update();
@@ -167,7 +166,8 @@
   initMeshBuffers();
   initInstanceBuffers();
   initMatrix();
-  glTips.setupTexture2DSimple(gl, "../assets/fighter.png", gl.RGBA, gl.RGBA,
+
+  glTips.setupTexture2DSimple(gl, "../assets/uv_test.png", gl.RGBA, gl.RGBA,
     gl.UNSIGNED_BYTE, gl.LINEAR, gl.CLAMP_TO_EDGE, true,
     function(){
       var uniformTextureSampler_0 = gl.getUniformLocation(shaderProgram, 'uTexture');
