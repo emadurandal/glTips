@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link href="https://cdn.rawgit.com/spite/rstats/6a92fea8b08a7f42ca3e405faaadffdfea358db8/demo/rStats.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <canvas id="webgl-canvas" width="500" height="500"></canvas>
+
+  <script id="shader-vs" type="x-shader/x-vertex">
+    precision highp float;
+    attribute vec3 aPosition;
+    attribute vec3 aNormal;
+    attribute vec2 aTexcoord;
+
+    attribute vec4 aWorldMatrixRow1;
+    attribute vec4 aWorldMatrixRow2;
+    attribute vec4 aWorldMatrixRow3;
+
+    varying vec3 vNormal;
+    varying vec2 vTexcoord;
+
+    uniform mat4 uVMatrix;
+    uniform mat4 uPMatrix;
+
+    void main(void) {
+
+      mat4 worldMatrix = mat4(
+        aWorldMatrixRow1.x, aWorldMatrixRow2.x, aWorldMatrixRow3.x, 0.0,
+        aWorldMatrixRow1.y, aWorldMatrixRow2.y, aWorldMatrixRow3.y, 0.0,
+        aWorldMatrixRow1.z, aWorldMatrixRow2.z, aWorldMatrixRow3.z, 0.0,
+        aWorldMatrixRow1.w, aWorldMatrixRow2.w, aWorldMatrixRow3.w, 1.0);
+      gl_Position = uPMatrix * uVMatrix * worldMatrix * vec4(aPosition, 1.0);
+      vNormal = (worldMatrix * vec4(aNormal, 1)).xyz;
+      vTexcoord = aTexcoord;
+    }
+
+  </script>
+
+
+  <script id="shader-fs" type="x-shader/x-fragment">
+    precision highp float;
+    varying vec3 vNormal;
+    varying vec2 vTexcoord;
+    uniform sampler2D uTexture;
+
+    void main(void) {
+      vec3 lightVec = vec3(0.5, 1.0, 0.0);
+      float lightIntensity = 1.5;
+      float diffuse = dot(lightVec, normalize(vNormal))*0.5+0.5;
+      diffuse = diffuse * diffuse;
+      vec4 decal = texture2D(uTexture, vTexcoord);
+      gl_FragColor = vec4(decal.xyz * diffuse * lightIntensity, 1.0);
+    }
+  </script>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.3.2/gl-matrix-min.js"></script>-->
+  <script>
+    //window.glTips_globalization = true;
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.3.2/gl-matrix-min.js"></script>
+  <script src="https://cdn.rawgit.com/spite/rstats/6a92fea8b08a7f42ca3e405faaadffdfea358db8/src/rStats.js"></script>
+  <script src="../../glTips.js"></script>
+  <script src="../assets/fighter_positions.js"></script>
+  <script src="../assets/fighter_normals.js"></script>
+  <script src="../assets/fighter_texcoords.js"></script>
+  <script src="../assets/fighter_indices.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>
