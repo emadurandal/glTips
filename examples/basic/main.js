@@ -10,6 +10,7 @@
   var shaderProgram = null;
   var attribLocationPosition = null;
   var attribLocationNormal = null;
+  var attribLocationTexcoord = null;
 
   function initVertexBuffers()
   {
