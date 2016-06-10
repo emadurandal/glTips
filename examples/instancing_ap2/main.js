@@ -57,9 +57,9 @@
   function initInstanceUniforms()
   {
     for (var i=0; i<INSTANCE_NUMBER; i++) {
-      worldMatrixRow1['_' + i] = gl.getUniformLocation(shaderProgram, 'aWorldMatrixRow1[' + i + ']');
-      worldMatrixRow2['_' + i] = gl.getUniformLocation(shaderProgram, 'aWorldMatrixRow2[' + i + ']');
-      worldMatrixRow3['_' + i] = gl.getUniformLocation(shaderProgram, 'aWorldMatrixRow3[' + i + ']');
+      worldMatrixRow1['_' + i] = gl.getUniformLocation(shaderProgram, 'uWorldMatrixRow1[' + i + ']');
+      worldMatrixRow2['_' + i] = gl.getUniformLocation(shaderProgram, 'uWorldMatrixRow2[' + i + ']');
+      worldMatrixRow3['_' + i] = gl.getUniformLocation(shaderProgram, 'uWorldMatrixRow3[' + i + ']');
     }
   }
 

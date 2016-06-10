@@ -14,9 +14,9 @@
     in vec3 aNormal;
     in vec2 aTexcoord;
 
-    uniform vec4 aWorldMatrixRow1[100];
-    uniform vec4 aWorldMatrixRow2[100];
-    uniform vec4 aWorldMatrixRow3[100];
+    uniform vec4 uWorldMatrixRow1[100];
+    uniform vec4 uWorldMatrixRow2[100];
+    uniform vec4 uWorldMatrixRow3[100];
 
     out vec3 vNormal;
     out vec2 vTexcoord;
@@ -27,10 +27,10 @@
     void main(void) {
 
       mat4 worldMatrix = mat4(
-        aWorldMatrixRow1[gl_InstanceID].x, aWorldMatrixRow2[gl_InstanceID].x, aWorldMatrixRow3[gl_InstanceID].x, 0.0,
-        aWorldMatrixRow1[gl_InstanceID].y, aWorldMatrixRow2[gl_InstanceID].y, aWorldMatrixRow3[gl_InstanceID].y, 0.0,
-        aWorldMatrixRow1[gl_InstanceID].z, aWorldMatrixRow2[gl_InstanceID].z, aWorldMatrixRow3[gl_InstanceID].z, 0.0,
-        aWorldMatrixRow1[gl_InstanceID].w, aWorldMatrixRow2[gl_InstanceID].w, aWorldMatrixRow3[gl_InstanceID].w, 1.0);
+        uWorldMatrixRow1[gl_InstanceID].x, uWorldMatrixRow2[gl_InstanceID].x, uWorldMatrixRow3[gl_InstanceID].x, 0.0,
+        uWorldMatrixRow1[gl_InstanceID].y, uWorldMatrixRow2[gl_InstanceID].y, uWorldMatrixRow3[gl_InstanceID].y, 0.0,
+        uWorldMatrixRow1[gl_InstanceID].z, uWorldMatrixRow2[gl_InstanceID].z, uWorldMatrixRow3[gl_InstanceID].z, 0.0,
+        uWorldMatrixRow1[gl_InstanceID].w, uWorldMatrixRow2[gl_InstanceID].w, uWorldMatrixRow3[gl_InstanceID].w, 1.0);
 
       gl_Position = uPMatrix * uVMatrix * worldMatrix * vec4(aPosition, 1.0);
       vNormal = (worldMatrix * vec4(aNormal, 1)).xyz;
