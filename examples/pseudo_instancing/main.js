@@ -12,13 +12,6 @@
     }
     gl.clearColor(0.8, 0.8, 1, 1);
     gl.enable(gl.DEPTH_TEST);
-
-
-    ext = gl.getExtension('ANGLE_instanced_arrays');
-    if(ext === null){
-        alert('ANGLE_instanced_arrays拡張がサポートされていません。');
-    }
-
   }
 
   initWebGL();
@@ -55,29 +48,6 @@
     var ibo = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeIndexArray), gl.STATIC_DRAW);
-  }
-
-  var instanceVbo = null;
-  var instanceVboTypedArray = new Float32Array(4*3*INSTANCE_NUMBER);
-  function initInstanceBuffers()
-  {
-    // create VBO
-    instanceVbo = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, instanceVbo);
-    gl.bufferData(gl.ARRAY_BUFFER, instanceVboTypedArray, gl.DYNAMIC_DRAW);
-    gl.vertexAttribPointer(attribLocationWorldMatrixRow1, 4, gl.FLOAT, gl.FALSE, 48, 0);
-    gl.vertexAttribPointer(attribLocationWorldMatrixRow2, 4, gl.FLOAT, gl.FALSE, 48, 16);
-    gl.vertexAttribPointer(attribLocationWorldMatrixRow3, 4, gl.FLOAT, gl.FALSE, 48, 32);
-
-    ext.vertexAttribDivisorANGLE(attribLocationWorldMatrixRow1, 1);
-    ext.vertexAttribDivisorANGLE(attribLocationWorldMatrixRow2, 1);
-    ext.vertexAttribDivisorANGLE(attribLocationWorldMatrixRow3, 1);
-    /*
-    gl.vertexAttribDivisor(attribLocationWorldMatrixRow1, 1);
-    gl.vertexAttribDivisor(attribLocationWorldMatrixRow2, 1);
-    gl.vertexAttribDivisor(attribLocationWorldMatrixRow3, 1);
-    */
-    gl.bindBuffer(gl.ARRAY_BUFFER, null);
   }
 
   function initShader() {
@@ -159,7 +129,6 @@
   // glTips();
   initShader();
   initMeshBuffers();
-  initInstanceBuffers();
   initMatrix();
 
   glTips.setupTexture2DSimple(gl, "../assets/uv_test.png", gl.RGBA, gl.RGBA,
