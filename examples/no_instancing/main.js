@@ -59,6 +59,8 @@
     attribLocationTexcoord = gl.getAttribLocation(shaderProgram, "aTexcoord");
     gl.enableVertexAttribArray(attribLocationTexcoord);
 
+    uniformLocationPVWMatrix = gl.getUniformLocation(shaderProgram, 'uPVWMatrix');
+    uniformLocationWMatrix = gl.getUniformLocation(shaderProgram, 'uWMatrix');
 
     gl.useProgram(shaderProgram);
   }
@@ -81,9 +83,7 @@
     mat4.mul(pvwMat, viewMat, worldMat);
     mat4.mul(pvwMat, projMat, pvwMat);
 
-    uniformLocationPVWMatrix = gl.getUniformLocation(shaderProgram, 'uPVWMatrix');
     gl.uniformMatrix4fv(uniformLocationPVWMatrix, false, pvwMat);
-    uniformLocationWMatrix = gl.getUniformLocation(shaderProgram, 'uWMatrix');
     gl.uniformMatrix4fv(uniformLocationWMatrix, false, worldMat);
   }
 
