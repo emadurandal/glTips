@@ -43,9 +43,6 @@
        throw new Error("WebGL1 not supported");
     }
 
-    if (!(gl instanceof WebGLRenderingContext)) {
-       throw new Error("unexpected rendering context.");
-    }
     return gl;
   }
 
