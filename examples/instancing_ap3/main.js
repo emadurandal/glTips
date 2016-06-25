@@ -35,7 +35,7 @@
     gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
 
     // convert separeted vertex attribute arrays to a interleaved array
-    var typedArray = glTips.makeVerticesDataInterleaved(gl, gl.FLOAT,
+    var typedArray = glTips.makeVerticesDataInterleaved(gl.FLOAT,
       [cubePosArray, cubeNormalArray, cubeTexcoordArray],
       [3, 3, 2]
     )

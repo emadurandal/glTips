@@ -202,14 +202,13 @@
   /**
    * Convert separeted vertex attribute arrays to a interleaved array.
    *
-   * @param {WebGLRenderingContext} gl. WebGL context
    * @param {number} type. for example, gl.FLOAT
    * @param {Array} arrayOfAttributeDataArray. array of vertex attribute data array.
    * @param {Array} componentArray. array of component number of vertex attribute data array.
    * @return {TypedArray} a interleaved TypedArray object. for example, Float32Array.
    * @memberOf module:glTips
    */
-  function glTips_makeVerticesDataInterleaved(gl, type, arrayOfAttributeDataArray, componentArray) {
+  function glTips_makeVerticesDataInterleaved(type, arrayOfAttributeDataArray, componentArray) {
     var bufferSize = 0;
     for (var key in arrayOfAttributeDataArray) {
       bufferSize += arrayOfAttributeDataArray[key].length;
@@ -221,7 +220,7 @@
     }
 
     var typedArray = null;
-    if (type === gl.FLOAT) {
+    if (type === 0x1406) { // gl.FLOAT
       typedArray = new Float32Array(bufferSize);
     }
 
